@@ -1,0 +1,9 @@
+Intermediary Code:
+LC  Instruction Opcode1(Reg)    Opcode2
+------------------------------------------------
+    AD 1        -               50    
+50  DL 2        -               5     
+55  DL 1        -               2     
+    LT 1        -               ='5'
+    LT 2        -               ='2'
+    AD 2        -               

@@ -1,0 +1,19 @@
+DC = Declare Constant
+DS = Declare Storage
+START = Start of the program
+END = End of the program
+ORIGIN = Origin of the program
+EQU = Equate
+LTORG = Literal Pool
+DL = Data Linkage
+AD = Assembly Directive
+
+
+START 40
+MOVER AREG S1
+
+LOC_CTR    LABEL      MNEMONIC   REGISTER   OPERAND   
+-----------------------------------------------
+40         N/A        START      N/A        40        
+40         N/A        MOVER      N/A        S1  
+

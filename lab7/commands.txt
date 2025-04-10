@@ -1,0 +1,3 @@
+flex comp.l
+byacc -d filename
+gcc lex.yy.c y.tab.c
