@@ -1,7 +1,5 @@
 %{
 #include "y.tab.h"
-extern int yyerror(char *str);
-extern int yyparse();
 %}
 
 %%

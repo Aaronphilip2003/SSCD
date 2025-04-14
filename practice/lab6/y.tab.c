@@ -20,13 +20,22 @@
 
 #define YYPURE 0
 
-#line 2 "comp.y"
+#line 2 "calc.y"
 #include<stdio.h>
-extern int yylex();
-extern int yywrap();
-extern int yyparse();
-extern char* yytext;
-#line 30 "y.tab.c"
+#include<stdlib.h>
+
+void yyerror(char *s);
+int yylex(void);
+
+void Expression();
+void ExpressionPrime();
+void Term();
+void TermPrime();
+void Factor();
+
+extern int yytoken;
+int result = 0;
+#line 39 "y.tab.c"
 
 #if ! defined(YYSTYPE) && ! defined(YYSTYPE_IS_DECLARED)
 /* Default: YYSTYPE is the semantic value type. */
@@ -69,97 +78,60 @@ int YYLEX_DECL();
 
 extern int YYPARSE_DECL();
 
-#define IF 257
-#define WHILE 258
-#define FOR 259
-#define OP 260
-#define CP 261
-#define OCB 262
-#define CCB 263
-#define CMP 264
-#define SC 265
-#define ASG 266
-#define ID 267
-#define NUM 268
-#define COMMA 269
-#define OPR 270
+#define PLUS 257
+#define MULT 258
+#define LPAREN 259
+#define RPAREN 260
+#define NUM 261
+#define ID 262
 #define YYERRCODE 256
 typedef int YYINT;
 static const YYINT yylhs[] = {                           -1,
-    0,    0,    0,    1,    2,    3,    4,    4,    5,    6,
-    7,    7,
+    0,    1,
 };
 static const YYINT yylen[] = {                            2,
-    1,    1,    1,    5,    5,    8,    3,    3,    4,    4,
-    5,    3,
+    1,    0,
 };
-static const YYINT yydefred[] = {                         0,
-    0,    0,    0,    0,    1,    2,    3,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    7,    8,    0,    4,    5,    0,    0,    0,   10,    0,
-    0,    0,    0,    0,    9,    0,   12,    6,    0,   11,
+static const YYINT yydefred[] = {                         2,
+    0,    1,
 };
 #if defined(YYDESTRUCT_CALL) || defined(YYSTYPE_TOSTRING)
 static const YYINT yystos[] = {                           0,
-  257,  258,  259,  272,  273,  274,  275,  260,  260,  260,
-  267,  276,  276,  267,  278,  264,  261,  261,  266,  276,
-  267,  268,  267,  277,  277,  268,  265,  266,  265,  267,
-  279,  268,  266,  261,  265,  267,  268,  277,  270,  268,
+  264,  265,
 };
 #endif /* YYDESTRUCT_CALL || YYSTYPE_TOSTRING */
-static const YYINT yydgoto[] = {                          4,
-    5,    6,    7,   12,   24,   15,   31,
+static const YYINT yydgoto[] = {                          1,
+    2,
 };
-static const YYINT yysindex[] = {                      -255,
- -250, -249, -248,    0,    0,    0,    0, -254, -254, -253,
- -247, -246, -243, -245, -254, -262, -244, -244, -242, -241,
-    0,    0, -239,    0,    0, -240, -238, -237,    0, -236,
- -233, -232, -259, -244,    0, -251,    0,    0, -234,    0,
+static const YYINT yysindex[] = {                         0,
+    0,    0,
 };
 static const YYINT yyrindex[] = {                         0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,
 };
 #if YYBTYACC
 static const YYINT yycindex[] = {                         0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,
 };
 #endif
 static const YYINT yygindex[] = {                         0,
-    0,    0,    0,   -8,  -18,    0,    0,
+    0,
 };
-#define YYTABLESIZE 34
-static const YYINT yytable[] = {                         25,
-   13,    1,    2,    3,   21,   22,   20,   36,   37,    8,
-    9,   10,   11,   14,   17,   38,   16,   18,   39,    0,
-   19,    0,   23,   27,   29,   26,   28,   34,   30,   33,
-   32,    0,   35,   40,
+#define YYTABLESIZE 0
+static const YYINT yytable[] = {                          0,
 };
-static const YYINT yycheck[] = {                         18,
-    9,  257,  258,  259,  267,  268,   15,  267,  268,  260,
-  260,  260,  267,  267,  261,   34,  264,  261,  270,   -1,
-  266,   -1,  267,  265,  265,  268,  266,  261,  267,  266,
-  268,   -1,  265,  268,
+static const YYINT yycheck[] = {                         -1,
 };
 #if YYBTYACC
 static const YYINT yyctable[] = {                        -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,
 };
 #endif
-#define YYFINAL 4
+#define YYFINAL 1
 #ifndef YYDEBUG
 #define YYDEBUG 0
 #endif
-#define YYMAXTOKEN 270
-#define YYUNDFTOKEN 280
+#define YYMAXTOKEN 262
+#define YYUNDFTOKEN 266
 #define YYTRANSLATE(a) ((a) > YYMAXTOKEN ? YYUNDFTOKEN : (a))
 #if YYDEBUG
 static const char *const yyname[] = {
@@ -170,24 +142,13 @@ static const char *const yyname[] = {
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"error","IF","WHILE","FOR","OP","CP",
-"OCB","CCB","CMP","SC","ASG","ID","NUM","COMMA","OPR","$accept","start","sif",
-"swhile","sfor","cmpn","stmt","init","inc","illegal-symbol",
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"error","PLUS","MULT","LPAREN","RPAREN",
+"NUM","ID","$accept","start","Expression","illegal-symbol",
 };
 static const char *const yyrule[] = {
 "$accept : start",
-"start : sif",
-"start : swhile",
-"start : sfor",
-"sif : IF OP cmpn CP stmt",
-"swhile : WHILE OP cmpn CP stmt",
-"sfor : FOR OP init cmpn SC inc CP stmt",
-"cmpn : ID CMP ID",
-"cmpn : ID CMP NUM",
-"stmt : ID ASG NUM SC",
-"init : ID ASG NUM SC",
-"inc : ID ASG ID OPR NUM",
-"inc : ID ASG NUM",
+"start : Expression",
+"Expression :",
 
 };
 #endif
@@ -319,25 +280,79 @@ static YYINT  *yylexp = 0;
 
 static YYINT  *yylexemes = 0;
 #endif /* YYBTYACC */
-#line 41 "comp.y"
-int yyerror(char *str)
-{
-    if (yytext[0] == 'w' || yytext[1] == 'h')
-        printf("Invalid WHILE statement!\n");
-    else if (yytext[0] == 'f' && yytext[1] == 'o')
-        printf("Invalid FOR statement!\n");
-    else
-        printf("Invalid IF statement!\n");
-    printf("%s\n", str);
-    return 0;
+#line 27 "calc.y"
+
+
+void Expression(){
+    printf("Processing expression...\n");
+    Term();
+    ExpressionPrime();
 }
 
-int main()
-{
-    yyparse();
-    return 1;
+void ExpressionPrime(){
+    if(yytoken == PLUS) {
+        printf("Found + Operator\n");
+        yylex();
+        Factor();
+        ExpressionPrime();
+    }
 }
-#line 341 "y.tab.c"
+
+void Term() {
+    printf("Processing term...\n");
+    Factor();
+    TermPrime();
+}
+
+void TermPrime() {
+    if(yytoken == MULT) {
+        printf("Found * Operator\n");
+        yylex();
+        Factor();
+        TermPrime();
+    }
+}
+
+void Factor() {
+    if(yytoken == LPAREN) {
+        printf("Found (\n");
+        yylex();
+        Expression();
+        if(yytoken == RPAREN) {
+            printf("Found )\n");
+            yylex();
+        }
+        else
+            yyerror("Expected ')'");
+    }
+    else if(yytoken == NUM) {
+        printf("Found number: %d\n", yytoken);
+        result = yytoken;
+        yylex();
+    }
+    else if(yytoken == ID) {
+        printf("Found identifier\n");
+        yylex();
+    }
+    else
+        yyerror("Syntax error in factor");
+}
+
+void yyerror(char *s) {
+    fprintf(stderr, "Error: %s\n", s);
+    exit(1);
+}
+
+int main() {
+    printf("Enter an expression (end with newline and Ctrl+D):\n");
+    yylex();
+    Expression();
+    if(yytoken != 0)
+        yyerror("Extra characters at end of input");
+    printf("Result: %d\n", result);
+    return 0;
+}
+#line 356 "y.tab.c"
 
 /* For use in generated program */
 #define yydepth (int)(yystack.s_mark - yystack.s_base)
@@ -1007,61 +1022,6 @@ yyreduce:
 
     switch (yyn)
     {
-case 4:
-#line 14 "comp.y"
-	{
-    printf("Parsed IF statement\n");
-    printf("VALID STATEMENT IF\n");
-}
-#line 1017 "y.tab.c"
-break;
-case 5:
-#line 20 "comp.y"
-	{
-    printf("Parsed WHILE statement\n");
-    printf("VALID STATEMENT WHILE\n");
-}
-#line 1025 "y.tab.c"
-break;
-case 6:
-#line 25 "comp.y"
-	{
-    printf("Parsed FOR statement\n");
-    printf("VALID STATEMENT FOR\n");
-}
-#line 1033 "y.tab.c"
-break;
-case 7:
-#line 30 "comp.y"
-	{ printf("Parsed comparison between two identifiers\n"); }
-#line 1038 "y.tab.c"
-break;
-case 8:
-#line 31 "comp.y"
-	{ printf("Parsed comparison between identifier and number\n"); }
-#line 1043 "y.tab.c"
-break;
-case 9:
-#line 33 "comp.y"
-	{ printf("Parsed assignment statement\n"); }
-#line 1048 "y.tab.c"
-break;
-case 10:
-#line 35 "comp.y"
-	{ printf("Parsed initialization\n"); }
-#line 1053 "y.tab.c"
-break;
-case 11:
-#line 37 "comp.y"
-	{ printf("Parsed increment with arithmetic\n"); }
-#line 1058 "y.tab.c"
-break;
-case 12:
-#line 38 "comp.y"
-	{ printf("Parsed simple increment\n"); }
-#line 1063 "y.tab.c"
-break;
-#line 1065 "y.tab.c"
     default:
         break;
     }

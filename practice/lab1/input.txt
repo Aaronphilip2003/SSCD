@@ -1,0 +1,4 @@
+START 50
+A1 DS 5
+A2 DC 2
+END

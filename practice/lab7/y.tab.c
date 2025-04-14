@@ -20,13 +20,9 @@
 
 #define YYPURE 0
 
-#line 2 "comp.y"
-#include<stdio.h>
-extern int yylex();
-extern int yywrap();
-extern int yyparse();
-extern char* yytext;
-#line 30 "y.tab.c"
+#line 2 "val_if.y"
+    #include<stdio.h>
+#line 26 "y.tab.c"
 
 #if ! defined(YYSTYPE) && ! defined(YYSTYPE_IS_DECLARED)
 /* Default: YYSTYPE is the semantic value type. */
@@ -70,96 +66,73 @@ int YYLEX_DECL();
 extern int YYPARSE_DECL();
 
 #define IF 257
-#define WHILE 258
-#define FOR 259
-#define OP 260
-#define CP 261
-#define OCB 262
-#define CCB 263
-#define CMP 264
+#define LPAREN 258
+#define RPAREN 259
+#define CMP 260
+#define OPR 261
+#define ASG 262
+#define ID 263
+#define NUM 264
 #define SC 265
-#define ASG 266
-#define ID 267
-#define NUM 268
-#define COMMA 269
-#define OPR 270
 #define YYERRCODE 256
 typedef int YYINT;
 static const YYINT yylhs[] = {                           -1,
-    0,    0,    0,    1,    2,    3,    4,    4,    5,    6,
-    7,    7,
+    0,    1,    3,    2,    2,
 };
 static const YYINT yylen[] = {                            2,
-    1,    1,    1,    5,    5,    8,    3,    3,    4,    4,
-    5,    3,
+    1,    5,    4,    3,    3,
 };
 static const YYINT yydefred[] = {                         0,
-    0,    0,    0,    0,    1,    2,    3,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    7,    8,    0,    4,    5,    0,    0,    0,   10,    0,
-    0,    0,    0,    0,    9,    0,   12,    6,    0,   11,
+    0,    0,    1,    0,    0,    0,    0,    0,    4,    5,
+    0,    2,    0,    0,    3,
 };
 #if defined(YYDESTRUCT_CALL) || defined(YYSTYPE_TOSTRING)
 static const YYINT yystos[] = {                           0,
-  257,  258,  259,  272,  273,  274,  275,  260,  260,  260,
-  267,  276,  276,  267,  278,  264,  261,  261,  266,  276,
-  267,  268,  267,  277,  277,  268,  265,  266,  265,  267,
-  279,  268,  266,  261,  265,  267,  268,  277,  270,  268,
+  257,  267,  268,  258,  263,  269,  260,  259,  263,  264,
+  263,  270,  262,  264,  265,
 };
 #endif /* YYDESTRUCT_CALL || YYSTYPE_TOSTRING */
-static const YYINT yydgoto[] = {                          4,
-    5,    6,    7,   12,   24,   15,   31,
+static const YYINT yydgoto[] = {                          2,
+    3,    6,   12,
 };
 static const YYINT yysindex[] = {                      -255,
- -250, -249, -248,    0,    0,    0,    0, -254, -254, -253,
- -247, -246, -243, -245, -254, -262, -244, -244, -242, -241,
-    0,    0, -239,    0,    0, -240, -238, -237,    0, -236,
- -233, -232, -259, -244,    0, -251,    0,    0, -234,    0,
+ -254,    0,    0, -260, -253, -251, -263, -258,    0,    0,
+ -256,    0, -252, -250,    0,
 };
 static const YYINT yyrindex[] = {                         0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,
 };
 #if YYBTYACC
 static const YYINT yycindex[] = {                         0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,
 };
 #endif
 static const YYINT yygindex[] = {                         0,
-    0,    0,    0,   -8,  -18,    0,    0,
+    0,    0,    0,
 };
-#define YYTABLESIZE 34
-static const YYINT yytable[] = {                         25,
-   13,    1,    2,    3,   21,   22,   20,   36,   37,    8,
-    9,   10,   11,   14,   17,   38,   16,   18,   39,    0,
-   19,    0,   23,   27,   29,   26,   28,   34,   30,   33,
-   32,    0,   35,   40,
+#define YYTABLESIZE 15
+static const YYINT yytable[] = {                          9,
+   10,    1,    5,    4,   11,   13,    7,    8,    0,    0,
+    0,   14,    0,    0,   15,
 };
-static const YYINT yycheck[] = {                         18,
-    9,  257,  258,  259,  267,  268,   15,  267,  268,  260,
-  260,  260,  267,  267,  261,   34,  264,  261,  270,   -1,
-  266,   -1,  267,  265,  265,  268,  266,  261,  267,  266,
-  268,   -1,  265,  268,
+static const YYINT yycheck[] = {                        263,
+  264,  257,  263,  258,  263,  262,  260,  259,   -1,   -1,
+   -1,  264,   -1,   -1,  265,
 };
 #if YYBTYACC
 static const YYINT yyctable[] = {                        -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,
+   -1,   -1,   -1,   -1,
 };
 #endif
-#define YYFINAL 4
+#define YYFINAL 2
 #ifndef YYDEBUG
 #define YYDEBUG 0
 #endif
-#define YYMAXTOKEN 270
-#define YYUNDFTOKEN 280
+#define YYMAXTOKEN 265
+#define YYUNDFTOKEN 271
 #define YYTRANSLATE(a) ((a) > YYMAXTOKEN ? YYUNDFTOKEN : (a))
 #if YYDEBUG
 static const char *const yyname[] = {
@@ -170,24 +143,17 @@ static const char *const yyname[] = {
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"error","IF","WHILE","FOR","OP","CP",
-"OCB","CCB","CMP","SC","ASG","ID","NUM","COMMA","OPR","$accept","start","sif",
-"swhile","sfor","cmpn","stmt","init","inc","illegal-symbol",
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"error","IF","LPAREN","RPAREN","CMP",
+"OPR","ASG","ID","NUM","SC","$accept","start","sif","CMPN","stmt",
+"illegal-symbol",
 };
 static const char *const yyrule[] = {
 "$accept : start",
 "start : sif",
-"start : swhile",
-"start : sfor",
-"sif : IF OP cmpn CP stmt",
-"swhile : WHILE OP cmpn CP stmt",
-"sfor : FOR OP init cmpn SC inc CP stmt",
-"cmpn : ID CMP ID",
-"cmpn : ID CMP NUM",
+"sif : IF LPAREN CMPN RPAREN stmt",
 "stmt : ID ASG NUM SC",
-"init : ID ASG NUM SC",
-"inc : ID ASG ID OPR NUM",
-"inc : ID ASG NUM",
+"CMPN : ID CMP ID",
+"CMPN : ID CMP NUM",
 
 };
 #endif
@@ -319,17 +285,11 @@ static YYINT  *yylexp = 0;
 
 static YYINT  *yylexemes = 0;
 #endif /* YYBTYACC */
-#line 41 "comp.y"
-int yyerror(char *str)
+#line 13 "val_if.y"
+
+int yyerror(char *s)
 {
-    if (yytext[0] == 'w' || yytext[1] == 'h')
-        printf("Invalid WHILE statement!\n");
-    else if (yytext[0] == 'f' && yytext[1] == 'o')
-        printf("Invalid FOR statement!\n");
-    else
-        printf("Invalid IF statement!\n");
-    printf("%s\n", str);
-    return 0;
+    printf("Error Occured\n");
 }
 
 int main()
@@ -337,7 +297,7 @@ int main()
     yyparse();
     return 1;
 }
-#line 341 "y.tab.c"
+#line 301 "y.tab.c"
 
 /* For use in generated program */
 #define yydepth (int)(yystack.s_mark - yystack.s_base)
@@ -1007,61 +967,22 @@ yyreduce:
 
     switch (yyn)
     {
-case 4:
-#line 14 "comp.y"
-	{
-    printf("Parsed IF statement\n");
-    printf("VALID STATEMENT IF\n");
-}
-#line 1017 "y.tab.c"
+case 2:
+#line 9 "val_if.y"
+	{printf("Validating if statement\n");}
+#line 974 "y.tab.c"
+break;
+case 3:
+#line 10 "val_if.y"
+	{printf("Parsed Assignment Statement\n");}
+#line 979 "y.tab.c"
 break;
 case 5:
-#line 20 "comp.y"
-	{
-    printf("Parsed WHILE statement\n");
-    printf("VALID STATEMENT WHILE\n");
-}
-#line 1025 "y.tab.c"
+#line 11 "val_if.y"
+	{printf("Parsed Comparison Statement");}
+#line 984 "y.tab.c"
 break;
-case 6:
-#line 25 "comp.y"
-	{
-    printf("Parsed FOR statement\n");
-    printf("VALID STATEMENT FOR\n");
-}
-#line 1033 "y.tab.c"
-break;
-case 7:
-#line 30 "comp.y"
-	{ printf("Parsed comparison between two identifiers\n"); }
-#line 1038 "y.tab.c"
-break;
-case 8:
-#line 31 "comp.y"
-	{ printf("Parsed comparison between identifier and number\n"); }
-#line 1043 "y.tab.c"
-break;
-case 9:
-#line 33 "comp.y"
-	{ printf("Parsed assignment statement\n"); }
-#line 1048 "y.tab.c"
-break;
-case 10:
-#line 35 "comp.y"
-	{ printf("Parsed initialization\n"); }
-#line 1053 "y.tab.c"
-break;
-case 11:
-#line 37 "comp.y"
-	{ printf("Parsed increment with arithmetic\n"); }
-#line 1058 "y.tab.c"
-break;
-case 12:
-#line 38 "comp.y"
-	{ printf("Parsed simple increment\n"); }
-#line 1063 "y.tab.c"
-break;
-#line 1065 "y.tab.c"
+#line 986 "y.tab.c"
     default:
         break;
     }
